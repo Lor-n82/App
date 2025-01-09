@@ -1,11 +1,16 @@
 package com.example.App.controller;
 
+import java.sql.Connection;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.App.bbdd.ConexionBBDD;
+import com.example.App.bbdd.Consultas;
 import com.example.App.model.Modelo;
+import com.example.App.model.Usuario;
 
 @Controller
 public class Controlador {
@@ -21,7 +26,15 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/principal")
-	public ModelAndView pantallaPrincipal() {
+	public ModelAndView pantallaPrincipal(@RequestParam(name="username", required=false) String usuario,@RequestParam(name="password", required=false) String password) {
+		
+		if(usuario!=null && !usuario.equalsIgnoreCase("")) {
+			Consultas consulta = new Consultas();
+			for (Usuario usu : consulta.consultaUsuarios()) {
+				System.out.println(usu.getNombre() + " : " + usu.getPassword());
+			}
+		}
+		
 		model = new ModelAndView();
 		model.setViewName("principal");
 		return model;
