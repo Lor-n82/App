@@ -20,9 +20,11 @@ public class Controlador {
 	
 	@RequestMapping("/")
 	public ModelAndView inicio() {
+		
 		model = new ModelAndView();
 		model.setViewName("index");
 		return model;
+		
 	}
 	
 	@RequestMapping("/principal")
@@ -42,16 +44,20 @@ public class Controlador {
 	
 	@RequestMapping("/accionPrincipalFichaje")
 	public ModelAndView gestionPrincipalFichaje() {
+		
 		model = new ModelAndView();
 		model.setViewName("index");
 		return model;
+		
 	}
 	
 	@RequestMapping("/accionPrincipalModificar")
 	public ModelAndView gestionPrincipalModificar() {
+		
 		model = new ModelAndView();
 		model.setViewName("calendario");
 		return model;
+		
 	}
 
 }
