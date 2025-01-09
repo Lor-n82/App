@@ -63,6 +63,13 @@
 		    <artifactId>spring-boot-devtools</artifactId>
 		    <version>3.4.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-plugins -->
+		<dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-plugins</artifactId>
+		    <version>23</version>
+		    <type>pom</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
