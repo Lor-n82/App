@@ -54,7 +54,7 @@ public class Controlador {
 			if(estadoFichaje.equalsIgnoreCase("Salida")) {
 				estadoFichaje = null;
 			}else {
-				estadoFichaje = "Salida";
+				estadoFichaje = "Salida"; 
 			}
 		}
 		model = new ModelAndView();
