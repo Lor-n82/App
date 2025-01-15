@@ -11,6 +11,8 @@ public class Modelo {
 	static DebugUtils debug;
 	
 	public static HashMap<String, String> logicaLoginRegistro(String usuario, String password, String login) {
+		debug = new DebugUtils();
+		debug.info("Entramos al metodo logicaLoginRegistro con parametros usuario=" + usuario + " password=" + password + " login=" + login);
 		consulta = new Consultas();
 		debug = new DebugUtils();
 		Usuario usu = null;
@@ -48,6 +50,7 @@ public class Modelo {
 		if(usu!=null){
 			listaDatos.put("idUsuario", String.valueOf(usu.getId()));
 		}
+		debug.info("Salimos de logicaLoginRegistro");
 		return listaDatos;
 	}
 

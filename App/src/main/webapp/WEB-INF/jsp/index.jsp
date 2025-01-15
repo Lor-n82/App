@@ -7,11 +7,12 @@
     <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
+	<h1 class="titulo-azul-pastel">Selecciona la opción</h1>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
         <form action="principal" method="post">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required><br><br>
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" required><br><br>
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required><br><br>
             <input type="submit"  id="login" name="login" value="Login">

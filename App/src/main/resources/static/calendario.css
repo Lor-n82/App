@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #d1e7f8; /* Fondo azul pastel */
+    background-color: #f0f4f8; /* Fondo azul pastel */
 }
 
 .container {
@@ -12,42 +12,45 @@ body {
     border-radius: 10px; /* Esquinas redondeadas */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
-.datepicker-input {
-    width: 200px;
-    padding: 10px;
-    border: 1px solid #a4c7e1; /* Borde azul pastel */
+/* Estilo para el input datetimepicker */
+.datetimepicker-input {
+    color: #333;
+    background-color: #fefefe;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #ffffff;
+    padding: 10px 15px;
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.ui-widget-content {
-    background: #d1e7f8; /* Fondo del datepicker azul pastel */
-    border: 1px solid #a4c7e1; /* Borde del datepicker azul pastel */
+/* Efecto hover */
+.datetimepicker-input:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-color: #888;
 }
 
-.ui-datepicker-header {
-    background: #a4c7e1; /* Fondo del encabezado del datepicker azul pastel */
-    color: white;
+/* Efecto focus */
+.datetimepicker-input:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-color: #5a9bd3;
+    outline: none;
 }
 
-.animated-button { 
-	width: 120px; 
-	height: 40px; 
-	background-color: #4da9d3; /* Botón azul pastel */ 
-	border: none; 
-	color: white; 
-	padding: 10px; 
-	text-align: center; 
-	text-decoration: none; 
-	display: inline-block; 
-	font-size: 12px; 
-	cursor: pointer; 
-	border-radius: 5px; 
-	transition: all 0.3s ease; 
+/* Animación del botón */
+.animated-button {
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
+
+.animated-button:hover {
+    background-color: #5a9bd3;
+    transform: translateY(-2px);
+}
+
 .button {
     background-color: #a4c7e1; /* Botón azul pastel */
     border: none;
@@ -61,6 +64,27 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
-.button:hover {
-    background-color: #78a8d6; /* Cambio de color al pasar el ratón */
+
+.titulo-azul-pastel {
+    color: #5a9bd3;  /* Tono azul pastel más oscuro */
+    font-family: Arial, sans-serif;
+    font-size: 2em; /* Tamaño del título */
+    text-align: center;
+    border: 2px solid #5a9bd3;  /* Borde azul pastel más oscuro */
+    padding: 5px 20px;  /* Espaciado dentro del borde*/
+    border-radius: 8px;  /* Bordes redondeados */
+    background-color: #f0f4f8;  /* Color de fondo azul pastel claro */
 }
+
+.form-inline { 
+	display: flex; 
+	flex-wrap: wrap; 
+	align-items: center;
+ 	margin-bottom: 12px; 
+ } 
+ 
+ .form-inline input, .form-inline button { 
+	 margin: 5px; 
+ }
+
+

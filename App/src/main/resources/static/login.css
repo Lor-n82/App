@@ -12,7 +12,7 @@ body {
     border-radius: 10px; /* Esquinas redondeadas */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 h2 {
@@ -44,3 +44,15 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #82b4c4; /* Botón pastel más oscuro en hover */
 }
+
+.titulo-azul-pastel {
+    color: #5a9bd3;  /* Tono azul pastel más oscuro */
+    font-family: Arial, sans-serif;
+    font-size: 2em; /* Tamaño del título */
+    text-align: center;
+    border: 2px solid #5a9bd3;  /* Borde azul pastel más oscuro */
+    padding: 5px 20px;  /* Espaciado dentro del borde*/
+    border-radius: 8px;  /* Bordes redondeados */
+    background-color: #f0f4f8;  /* Color de fondo azul pastel claro */
+}
+
