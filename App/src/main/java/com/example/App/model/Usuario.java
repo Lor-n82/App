@@ -5,6 +5,7 @@ public class Usuario {
 	private int id;
 	private String nombre;
 	private String password;
+	private int esAdmin;
 
 	public int getId() {
 		return id;
@@ -24,5 +25,10 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	public int getEsAdmin() {
+		return esAdmin;
+	}
+	public void setEsAdmin(int esAdmin) {
+		this.esAdmin = esAdmin;
+	}
 }

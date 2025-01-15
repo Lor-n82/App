@@ -10,8 +10,7 @@
 	if(request.getAttribute("estadoFichaje")!=null){
 		fichar = (String)request.getAttribute("estadoFichaje");
 	}
-	DebugUtils debug = new DebugUtils();
-	debug.info(fichar);
+	String esAdmin=(String)request.getAttribute("esAdmin");
 %>
     <title>Página con Botones</title>
     <link rel="stylesheet" type="text/css" href="principal.css">
@@ -24,6 +23,7 @@
 	        <input type="hidden" id="idUsuario" name="idUsuario" value="<%=idUsuario%>"/>
 	        <input type="hidden" id="usuario" name="usuario" value="<%=usuario%>"/>
 	        <input type="hidden" id="password" name="password" value="<%=password%>"/>
+	        <input type="hidden" id="esAdmin" name="esAdmin" value="<%=esAdmin%>"/>
 		</form>
 		<%if(mensaje!=null){%>
 			<%=mensaje %>
@@ -33,7 +33,13 @@
 			<input type="hidden" id="idUsuario" name="idUsuario" value="<%=idUsuario%>"/>
 			<input type="hidden" id="usuario" name="usuario" value="<%=usuario%>"/>
 	        <input type="hidden" id="password" name="password" value="<%=password%>"/>
+	        <input type="hidden" id="esAdmin" name="esAdmin" value="<%=esAdmin%>"/>
 		</form>
+		<%if(esAdmin!=null && esAdmin.equalsIgnoreCase("1")){%>
+			<form action="/" method="post">
+		        <button name="admin" id="admin" class="button">Administrador</button>
+			</form>
+		<%} %>
 		<form action="/" method="post">
 	        <button name="volver" id="volver" class="button">Salir</button>
 		</form>

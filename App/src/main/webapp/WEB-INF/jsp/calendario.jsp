@@ -5,6 +5,7 @@
 String password=(String)request.getAttribute("password");
 String idUsuario=(String)request.getAttribute("idUsuario");
 String solicitado=(String)request.getAttribute("solicitado");
+String esAdmin=(String)request.getAttribute("esAdmin");
 %>
     <title>Datepicker Centrado</title>
     <link rel="stylesheet" type="text/css" href="calendario.css">
@@ -71,6 +72,7 @@ String solicitado=(String)request.getAttribute("solicitado");
 	        <input type="hidden" id="switchFecha" name="switchFecha"/>
 	        <input type="hidden" id="idUsuario" name="idUsuario" value="<%=idUsuario%>"/>
 	        <input type="hidden" id="solicitado" name="solicitado" value="<%=solicitado%>"/>
+	        <input type="hidden" id="esAdmin" name="esAdmin" value="<%=esAdmin%>"/>
         	<button type="submit" name="enviar" id="enviar" class="button">Enviar Petición</button>
 		</form>
 		<form action="/menuAcciones" method="post" class="form-inline">
@@ -79,6 +81,7 @@ String solicitado=(String)request.getAttribute("solicitado");
 			 <input type="hidden" id="idUsuario" name="idUsuario" value="<%=idUsuario%>"/>
 			 <input type="hidden" id="usuario" name="usuario" value="<%=usuario%>"/>
 			 <input type="hidden" id="password" name="password" value="<%=password%>"/>
+			 <input type="hidden" id="esAdmin" name="esAdmin" value="<%=esAdmin%>"/>
 		</form>
     </div>
 </body>

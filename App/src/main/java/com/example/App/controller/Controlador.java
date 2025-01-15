@@ -37,6 +37,7 @@ public class Controlador {
 		String mensaje = datos.get("mensaje")!=null?datos.get("mensaje"):"";
 		String vista = datos.get("vista")!=null?datos.get("vista"):"";
 		String idUsuario = datos.get("idUsuario")!=null?datos.get("idUsuario"):"";
+		String esAdmin = datos.get("esAdmin")!=null?datos.get("esAdmin"):"";
 		model = new ModelAndView();
 		if(idUsuario!=null && !idUsuario.equalsIgnoreCase("")) {
 			model.addObject("idUsuario", idUsuario);
@@ -44,28 +45,33 @@ public class Controlador {
 		model.addObject("usuario", usuario);
 		model.addObject("password", password);
 		model.addObject("mensaje", mensaje);
+		model.addObject("esAdmin", esAdmin);
 		model.setViewName(vista);
 		debug.info("Vamos a la vista " + vista);
 		return model;
 	}
 	
 	@RequestMapping("/menuAcciones")
-	public ModelAndView menuAcciones(@RequestParam(name="idUsuario", required=false) String idUsuario, @RequestParam(name="usuario", required=false) String usuario,@RequestParam(name="password", required=false) String password,
-			@RequestParam(name="login", required=false) String login,@RequestParam(name="registro", required=false) String registro) {
+	public ModelAndView menuAcciones(@RequestParam(name="idUsuario", required=false) String idUsuario, @RequestParam(name="usuario", required=false) String usuario,
+									 @RequestParam(name="password", required=false) String password, @RequestParam(name="login", required=false) String login,
+									 @RequestParam(name="registro", required=false) String registro, @RequestParam(name="esAdmin", required=false) String esAdmin) {
 		
 		debug.info("Entra en menuAcciones con parametros: idUsuario=" + idUsuario + " usuario=" + usuario + " password=" + password + " login=" + login + " registro=" + registro);
 		model = new ModelAndView();
 		model.addObject("idUsuario", idUsuario);
 		model.addObject("usuario", usuario);
 		model.addObject("password", password);
+		model.addObject("esAdmin", esAdmin);
 		model.setViewName("principal");
 		debug.info("Vamos a la vista principal");
 		return model;
 	}
 
 	@RequestMapping("/accionPrincipalFichaje")
-	public ModelAndView accionPrincipalFichaje(@RequestParam(name="fichar") String estadoFichaje, @RequestParam(name="idUsuario") String idUsuario) {
-		debug.info("Entra en accionPrincipalFichaje con parametros: fichar=" + estadoFichaje + " idusuario=" + idUsuario);
+	public ModelAndView accionPrincipalFichaje(@RequestParam(name="fichar") String estadoFichaje, 
+											   @RequestParam(name="idUsuario") String idUsuario,
+											   @RequestParam(name="esAdmin") String esAdmin) {
+		debug.info("Entra en accionPrincipalFichaje con parametros: fichar=" + estadoFichaje + " idusuario=" + idUsuario + " esAdmin=" + esAdmin);
 		consulta = new Consultas();
 		model = new ModelAndView();
 		String mensaje = null;
@@ -85,6 +91,7 @@ public class Controlador {
 		}
 		model.addObject("estadoFichaje", estadoFichaje);
 		model.addObject("idUsuario", idUsuario);
+		model.addObject("esAdmin", esAdmin);
 		model.setViewName("principal");
 		debug.info("Vamos a la vista principal");
 		return model;
@@ -92,7 +99,9 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/accionPrincipalModificar")
-	public ModelAndView accionPrincipalModificar(@RequestParam(name="usuario") String usuario,@RequestParam(name="password") String password, @RequestParam(name="idUsuario") String idUsuario, @RequestParam(name="modificar") String solicitado) {
+	public ModelAndView accionPrincipalModificar(@RequestParam(name="usuario") String usuario,@RequestParam(name="password") String password, 
+												 @RequestParam(name="idUsuario") String idUsuario, @RequestParam(name="modificar") String solicitado,
+												 @RequestParam(name="esAdmin") String esAdmin) {
 		debug.info("Entra en accionPrincipalModificar con parametros: idusuario=" + idUsuario + " modificar=" + solicitado);
 		consulta = new Consultas();
 		model = new ModelAndView();
@@ -100,6 +109,7 @@ public class Controlador {
 		model.addObject("password", password);
 		model.addObject("idUsuario", idUsuario);
 		model.addObject("solicitado", solicitado);
+		model.addObject("esAdmin", esAdmin);
 		model.setViewName("calendario");
 		debug.info("Vamos a la vista calendario");
 		return model;
@@ -107,7 +117,9 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/modificarFechaSeleccionada")
-	public ModelAndView modificarFechaSeleccionada(@RequestParam(name="datetimepicker") String fecha, @RequestParam(name="switchFecha") String switchFecha, @RequestParam(name="idUsuario") String idUsuario, @RequestParam(name="solicitado") String solicitado) {
+	public ModelAndView modificarFechaSeleccionada(@RequestParam(name="datetimepicker") String fecha, @RequestParam(name="switchFecha") String switchFecha,
+												   @RequestParam(name="idUsuario") String idUsuario, @RequestParam(name="solicitado") String solicitado,
+												   @RequestParam(name="esAdmin") String esAdmin) {
 		debug.info("Entra en modificarFechaSeleccionada con parametros: fecha=" + fecha + " switchFecha=" + switchFecha + " idUsuario=" + idUsuario + " solicitado=" + solicitado);
 		consulta = new Consultas();
 		int exito = consulta.eliminarRegistroSolicitadoAnterior(idUsuario, solicitado, fecha, switchFecha);
@@ -123,6 +135,7 @@ public class Controlador {
 		model = new ModelAndView();
 		model.addObject("idUsuario", idUsuario);
 		model.addObject("solicitado", solicitado);
+		model.addObject("esAdmin", esAdmin);
 		model.setViewName("calendario");
 		return model;
 		

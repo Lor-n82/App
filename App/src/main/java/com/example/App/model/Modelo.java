@@ -33,9 +33,13 @@ public class Modelo {
 		}else {
 			debug.info(usuario + "" + password + " Se registra");
 			if(usuario!=null && !usuario.equalsIgnoreCase("")) {
-				usu = consulta.consultaUsuario(usuario, password);
+				usu = consulta.consultaUsuario(usuario, "");
 				if(usu==null) {
-					consulta.registrarUsuario(usuario, password);
+					int exito = consulta.registrarUsuario(usuario, password);
+					if(exito==1) {
+						vista = "index";
+						mensaje = "Usuario registrado correctamente";
+					}
 				}else {
 					debug.info("El usuario " + usuario + " ya esta registrado");
 					vista = "index";
@@ -49,6 +53,7 @@ public class Modelo {
 		listaDatos.put("mensaje", mensaje);
 		if(usu!=null){
 			listaDatos.put("idUsuario", String.valueOf(usu.getId()));
+			listaDatos.put("esAdmin", String.valueOf(usu.getEsAdmin()));
 		}
 		debug.info("Salimos de logicaLoginRegistro");
 		return listaDatos;

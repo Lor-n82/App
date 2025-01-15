@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.example.App.model.Fichaje;
 import com.example.App.model.Usuario;
 import com.example.App.utils.DebugUtils;
 
@@ -73,7 +74,10 @@ public class Consultas {
 
 			// Realizar la consulta
 			String consulta = "SELECT * FROM Usuarios where ";
-			consulta += "nombre='" + usuario + "' and password='" + password +"'";
+			consulta += "nombre='" + usuario + "'";
+			if(password!=null && !password.equalsIgnoreCase("")) {
+				consulta +=  " and password='" + password +"'";
+			}
 			debug.info("SQL :: " + consulta);
 			ResultSet resultSet = statement.executeQuery(consulta);
 
@@ -83,6 +87,7 @@ public class Consultas {
 				usu.setId(resultSet.getInt("id"));;
 				usu.setNombre(resultSet.getString("nombre"));
 				usu.setPassword(resultSet.getString("password"));
+				usu.setEsAdmin(resultSet.getInt("admin"));
 			}
 			
 			if(usu.getNombre()!=null && !usu.getNombre().equalsIgnoreCase("")){
@@ -330,7 +335,7 @@ public class Consultas {
 				preparedStatement.setTimestamp(2, timestamp); 
 				preparedStatement.setString(3, "Entrada");
 			}else {
-				preparedStatement.setTimestamp(3, timestamp); 
+				preparedStatement.setTimestamp(2, timestamp); 
 				preparedStatement.setString(3, "Salida");
 			}
 			
@@ -351,6 +356,52 @@ public class Consultas {
 		debug.info("Salimos del metodo registroHistoricoFichaje con exito= " + exito);
 		return exito;
 
+	}
+	
+public String  consultarEstadoFichaje(String idUsuario) {
+		
+		debug.info("Entramos en consultarEstadoFichaje con parametros idUsuario=" + idUsuario);
+		
+		String estadoFichaje = null;
+		List<Fichaje> listaFichaje = new ArrayList<>();
+		
+		try {
+			// Establecer la conexión
+			conexion = cn.crearConexion();
+
+			Statement statement = conexion.createStatement();
+
+			// Realizar la consulta
+			String consulta = "SELECT * FROM Fichaje Where idUsuario=" + idUsuario;
+			consulta += " and fechaEntrada is not null and DATE(fechaEntrada) = CURDATE()";
+			consulta += " or fechaSalida is not null and DATE(fechaEntrada) = CURDATE()";
+			
+			debug.info("SQL :: " + consulta);
+			ResultSet resultSet = statement.executeQuery(consulta);
+
+			// Mostrar los resultados
+			while (resultSet.next()) {
+				Fichaje fichaje = new Fichaje();
+				fichaje.setId(resultSet.getInt("id"));
+				fichaje.setIdUsuario(resultSet.getInt("idUsuario"));
+				fichaje.setFechaEntrada(resultSet.getString(""));
+				fichaje.setFechaSalida(resultSet.getString(""));
+				fichaje.setSolicitado(resultSet.getInt(""));
+				listaFichaje.add(fichaje);
+				debug.info("");
+			}
+			// Cerrar la conexión
+			resultSet.close();
+			statement.close();
+		} catch (Exception e) {
+			debug.error(e.getMessage());
+		} finally {
+			cn.cerrarConexion(conexion);
+		}
+	
+		debug.info("Salimos del metodo comprobarFecha");
+		
+		return estadoFichaje;
 		
 	}
 	
